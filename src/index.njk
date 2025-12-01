@@ -15,7 +15,7 @@ title: Home
 
   {% set latestNews = collections.news | reverse | slice(0, 3) %}
 
-  {% if latestNews.length %}
+  {% if latestNews and latestNews.length > 0 %}
     <div class="space-y-4">
       {% for post in latestNews %}
         <article class="bg-white shadow rounded-lg p-4">
@@ -24,20 +24,19 @@ title: Home
               {{ post.data.title }}
             </a>
           </h3>
+
           <p class="text-xs text-gray-500 mb-2">
             {{ post.date | date("dd LLLL yyyy") }}
           </p>
+
           <p class="text-gray-700">
             {{ post.data.summary }}
           </p>
         </article>
       {% endfor %}
     </div>
-
-    <div class="mt-4">
-      <a href="/news/" class="text-sm text-blue-600 hover:underline">View all news →</a>
-    </div>
   {% else %}
     <p class="text-gray-600">No news yet.</p>
   {% endif %}
 </section>
+
