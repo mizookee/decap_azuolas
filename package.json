@@ -1,0 +1,24 @@
+{
+  "name": "decap_azuolas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx @tailwindcss/cli -i ./src/styles.css -o ./src/assets/styles.css",
+    "watch:css": "npx @tailwindcss/cli -i ./src/styles.css -o ./src/assets/styles.css --watch",
+    "build:11ty": "npx @11ty/eleventy",
+    "serve": "npx @11ty/eleventy --serve --port=8080",
+    "build": "npm run build:css && npm run build:11ty"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@tailwindcss/cli": "^4.1.17"
+  },
+  "dependencies": {
+    "luxon": "^3.7.2"
+  }
+}

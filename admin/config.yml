@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main   # or master, depending on your repo
+
+media_folder: "src/images/uploads"     # in the repo
+public_folder: "/images/uploads"       # on the website
+
+collections:
+  - name: "news"
+    label: "News"
+    label_singular: "News item"
+    folder: "src/news"
+    create: true
+    extension: "md"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "news.post.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Summary", name: "summary", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["news"] }

@@ -1,0 +1,43 @@
+---
+layout: base.njk
+title: Home
+---
+
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-4">Welcome</h2>
+  <p class="text-gray-700">
+    This is your new website powered by Eleventy, Tailwind CSS v4, and Decap CMS.
+  </p>
+</section>
+
+<section>
+  <h2 class="text-2xl font-bold mb-4">Latest News</h2>
+
+  {% set latestNews = collections.news | reverse | slice(0, 3) %}
+
+  {% if latestNews.length %}
+    <div class="space-y-4">
+      {% for post in latestNews %}
+        <article class="bg-white shadow rounded-lg p-4">
+          <h3 class="text-xl font-semibold mb-1">
+            <a href="{{ post.url }}" class="hover:text-blue-600">
+              {{ post.data.title }}
+            </a>
+          </h3>
+          <p class="text-xs text-gray-500 mb-2">
+            {{ post.date | date("dd LLLL yyyy") }}
+          </p>
+          <p class="text-gray-700">
+            {{ post.data.summary }}
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="mt-4">
+      <a href="/news/" class="text-sm text-blue-600 hover:underline">View all news →</a>
+    </div>
+  {% else %}
+    <p class="text-gray-600">No news yet.</p>
+  {% endif %}
+</section>
